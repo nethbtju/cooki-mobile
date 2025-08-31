@@ -1,33 +1,32 @@
-import { createTamagui } from 'tamagui'
-import { createTokens } from '@tamagui/core'
+import { color, radius, size, space, themes, zIndex } from '@tamagui/themes'
+import { createTamagui, createTokens } from 'tamagui'
 
 const tokens = createTokens({
+  size,
+  space,
+  zIndex,
   color: {
-    body: '#E9E9E9',
-    bodyDark: '#EEF1FF',
+    background: '#E9E9E9',
+    cardBackground: '#EEF1FF',
     secondary: '#6F88FC',
     accentBurntOrange: '#E86C4D',
     accentLightOrange: '#FF9671',
     accentDarkPurple: '#4F68D9',
     text: '#171717',
   },
-  size: {
-    title: 36,
-    heading: 24,
-    subheading: 20,
-    action: 12,
-    description: 10,
-    notification: 6
-  },
+  radius,
 })
 
 const config = createTamagui({
+  themes,
   tokens,
+  // ... see Configuration
 })
 
-export type AppConfig = typeof config
+export type Conf = typeof config
+
 declare module 'tamagui' {
-  interface TamaguiCustomConfig extends AppConfig {}
+  interface TamaguiCustomConfig extends Conf {}
 }
 
 export default config
